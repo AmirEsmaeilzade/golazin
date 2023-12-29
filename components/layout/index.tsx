@@ -7,7 +7,9 @@ const Layout = ({ children }: OptionalMiddleName) => {
     return (
         <div className="">
             <Header />
-            {children}
+            <div className="mx-10">
+                {children}
+            </div>
         </div>
     );
 };

@@ -1,11 +1,16 @@
-import Button from '@mui/material/Button';
+"use client";
 
-const HomePage = () => {
+import ProductsList from "./productsList";
+
+interface OptionalMiddleName {
+    products : any;
+}
+const HomePage = ({products}:OptionalMiddleName) => {
+    console.log(products)
     return (
         <>
             <div className="">
-                <p className="text-green-500">yyhh</p>
-                <Button className='w-96 bg-amber-300 text-teal-600' variant="contained">Contained</Button>
+                <ProductsList products={products}/>
             </div>
         </>
     )
