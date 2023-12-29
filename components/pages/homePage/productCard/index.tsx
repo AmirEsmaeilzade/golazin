@@ -7,8 +7,8 @@ import EditModal from "./editModal";
 
 interface OptionalMiddleName {
     dataProduct : any;
-    deleteHandler : any;
-    editHandler : any;
+    deleteHandler : Function;
+    editHandler : Function;
 }
 const ProductsCard = ({dataProduct,deleteHandler,editHandler}:OptionalMiddleName) => {
     const {id, price, category, image, title, rating } = dataProduct;
@@ -20,7 +20,7 @@ const ProductsCard = ({dataProduct,deleteHandler,editHandler}:OptionalMiddleName
     return (
         <>
             <div className="flex w-full my-5 mr-10 p-2 border border-purple-500 rounded-md text-gray-700">
-                <div className="p-2 bg-white rounded-md shadow-lg"><Image src={image} alt="" className="w-[270px] h-[200px] " width={270} height={200}/></div>
+                <div className="p-2 bg-white rounded-md shadow-lg"><Image src={image} alt="Image" className="w-[270px] h-[200px] " width={270} height={200} priority/></div>
                 <div className="w-full px-4 flex flex-col justify-between">
                     <div>
                         <div className="flex justify-between">

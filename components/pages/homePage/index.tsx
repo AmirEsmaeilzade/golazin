@@ -6,13 +6,8 @@ interface OptionalMiddleName {
     data : any;
 }
 const HomePage = ({data}:OptionalMiddleName) => {
-    console.log(data)
     return (
-        <>
-            <div className="">
-                <ProductsList data={data}/>
-            </div>
-        </>
+        <ProductsList data={data}/>
     )
 }
 

@@ -5,41 +5,23 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 interface OptionalMiddleName {
-    openModal : any;
+    openModal : boolean;
     handleClose : any;
-    title : any;
-    category : any;
-    price : any;
-    editHandler : any;
-    id:any;
+    title : string;
+    category : string;
+    price : string;
+    editHandler : Function;
+    id:number;
 }
 const EditModal = ({openModal ,handleClose ,title ,category ,price ,editHandler, id}:OptionalMiddleName) => {
     
-    const [titleInput , setTitleInput] = useState(title)
-    const [categoryInput , setCategoryeInput] = useState(category)
-    const [priceInput , setPriceInput] = useState(price)
-
-    const [titleError , setTitleError] = useState(false)
-    const [categoryError , setCategoryeError] = useState(false)
-    const [priceError , setPriceError] = useState(false)
+    const dataUpdated = {titleUpdate:title , categoryUpdate:category , priceUpdate:price}
 
     const submitHandler = (e:any) => {
         e.preventDefault()
-        setTitleError(false)
-        setCategoryeError(false)
-        setPriceError(false)
 
-        if(titleInput == ""){
-            setTitleError(true)
-        }
-        if(categoryInput == ""){
-            setCategoryeError(true)
-        }
-        if(priceInput == ""){
-            setPriceError(true)
-        }
         handleClose() 
-        return editHandler(titleInput,categoryInput,priceInput,id)
+        return editHandler(dataUpdated,id)
     }
 
     const style = {
@@ -62,31 +44,28 @@ const EditModal = ({openModal ,handleClose ,title ,category ,price ,editHandler,
             <Box sx={style}>
                 <form onSubmit={submitHandler}>
                     <TextField 
-                        onChange={(e) => setTitleInput(e.target.value)}
+                        onChange={(e) => dataUpdated.titleUpdate = e.target.value}
                         variant="outlined"
                         defaultValue={title}
                         className="m-5 w-[700px] mx-auto"
                         color="secondary"
                         required
-                        error={titleError}
                     />
                     <TextField 
-                        onChange={(e) => setCategoryeInput(e.target.value)}
+                        onChange={(e) => dataUpdated.categoryUpdate = e.target.value}
                         variant="outlined"
                         defaultValue={category}
                         className="m-5 w-[700px] mx-auto"
                         color="secondary"
                         required
-                        error={categoryError}
                     />
                     <TextField 
-                        onChange={(e) => setPriceInput(e.target.value)}
+                        onChange={(e) => dataUpdated.priceUpdate = e.target.value}
                         variant="outlined"
                         defaultValue={price}
                         className="m-5 w-[700px] mx-auto"
                         color="secondary"
                         required
-                        error={priceError}
                     />
 
                     <Button

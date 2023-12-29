@@ -1,4 +1,4 @@
-import './globals.css'
+import '../../styles/globals.css'
 import Layout from '../../components/layout'
 
 export default function RootLayout({
