@@ -2,15 +2,15 @@ import HomePage from "../../components/pages/homePage"
 import axios from "axios";
 
 export default async function Home() {
-  const products = await getPageData()
-  console.log(products)
+  const data = await getPageData()
+  console.log(data)
   return (
-    <HomePage products={products}/>
+    <HomePage data={data}/>
   )
 }
 
 async function getPageData() {
-  const data = axios.get('https://fakestoreapi.com/products')
+  const data = await axios.get('https://fakestoreapi.com/products')
   .then(function (response) {
     // handle success
     console.log(response);

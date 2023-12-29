@@ -3,14 +3,14 @@
 import ProductsList from "./productsList";
 
 interface OptionalMiddleName {
-    products : any;
+    data : any;
 }
-const HomePage = ({products}:OptionalMiddleName) => {
-    console.log(products)
+const HomePage = ({data}:OptionalMiddleName) => {
+    console.log(data)
     return (
         <>
             <div className="">
-                <ProductsList products={products}/>
+                <ProductsList data={data}/>
             </div>
         </>
     )
