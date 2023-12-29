@@ -21,13 +21,13 @@ const ProductsList = ({data}:OptionalMiddleName) => {
           // handle error
           console.log(error);
         })
-      }
+    }
 
     return (
         <>
             <div className="">
                 { products.map((item:any) => (
-                    <ProductsCard dataProduct={item} deleteHandler={deleteHandler}/>
+                    <ProductsCard key={item.id} dataProduct={item} deleteHandler={deleteHandler}/>
                 ))}
             </div>
         </>

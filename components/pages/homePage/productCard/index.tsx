@@ -2,7 +2,8 @@ import Image from "next/image";
 import StarIcon from '@mui/icons-material/Star';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import axios from "axios";
+import { useState } from "react";
+import EditModal from "./editModal";
 
 interface OptionalMiddleName {
     dataProduct : any;
@@ -10,6 +11,10 @@ interface OptionalMiddleName {
 }
 const ProductsCard = ({dataProduct,deleteHandler}:OptionalMiddleName) => {
     const {id, price, category, image, title, rating } = dataProduct;
+
+    const [openModal, setOpenModal] = useState(false);
+    const handleOpen = () => setOpenModal(true);
+    const handleClose = () => setOpenModal(false);
 
     return (
         <>
@@ -20,7 +25,8 @@ const ProductsCard = ({dataProduct,deleteHandler}:OptionalMiddleName) => {
                         <div className="flex justify-between">
                             <p className="font-semibold text-xl">{title}</p>
                             <div>
-                                <EditIcon className="text-blue-500 mr-2"/>
+                                <EditIcon className="text-blue-500 mr-2" onClick={handleOpen}/>
+                                <EditModal title={title} category={category} price={price} openModal={openModal} handleClose={handleClose}/>
                                 <DeleteIcon className="text-red-600" onClick={() => deleteHandler(id)}/>
                             </div>
                         </div>
